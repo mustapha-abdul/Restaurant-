@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <title>Savanna Bites</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --header-color: bisque;
+      --header-text: rgb(247, 236, 222);
+      --general-color: white;
+      --green: rgba(9, 137, 2, 0.86);
+      --green-dark: #0b6e04;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f5f5;
+      color: #222;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* ============ HEADER ============ */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: url("image/wood.jpg");
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .left {
+      cursor: pointer;
+      margin-left: 30px;
+      font-size: 26px;
+      color: var(--header-color);
+      font-weight: bold;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .left i {
+      font-size: 24px;
+    }
+
+    .right {
+      display: flex;
+      align-items: center;
+    }
+
+    .right ul {
+      display: flex;
+      list-style: none;
+    }
+
+    .right li {
+      position: relative;
+      margin-right: 40px;
+    }
+
+    .right li::before {
+      content: "";
+      width: 50px;
+      height: 4px;
+      background: var(--header-color);
+      position: absolute;
+      top: 26px;
+      left: 50%;
+      transform: translateX(-50%) scale(0);
+      transition: 0.4s ease;
+      border-radius: 20px;
+    }
+
+    .right li:hover::before {
+      transform: translateX(-50%) scale(1);
+    }
+
+    .right li a {
+      text-decoration: none;
+      color: var(--header-text);
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-weight: bold;
+      font-size: 15px;
+      letter-spacing: 0.5px;
+      transition: color 0.3s;
+    }
+
+    .right li a:hover {
+      color: #fff;
+    }
+
+    /* ============ HERO ============ */
+    .container {
+      position: relative;
+      padding: 180px 80px 120px;
+      background:
+        linear-gradient(to right, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.2)),
+        url("image/background.png");
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .container h1 {
+      color: var(--general-color);
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', sans-serif;
+      font-weight: bold;
+      font-size: 72px;
+      line-height: 1.1;
+      max-width: 700px;
+    }
+
+    .container p {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      color: #eee;
+      font-size: 18px;
+      line-height: 1.6;
+      max-width: 550px;
+    }
+
+    .by {
+      display: flex;
+      align-items: center;
+      margin-top: 30px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .by li {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      list-style: none;
+      height: 52px;
+      color: var(--general-color);
+      padding: 0 28px;
+      background: var(--green);
+      border-radius: 50px;
+      transition: 0.3s ease-in-out;
+      cursor: pointer;
+    }
+
+    .by li:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(9, 137, 2, 0.4);
+    }
+
+    .by li a {
+      text-decoration: none;
+      color: var(--general-color);
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-size: 17px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .by li:first-child {
+      background: transparent;
+      border: 2px solid rgba(255, 255, 255, 0.6);
+    }
+
+    .by li:first-child:hover {
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: none;
+    }
+
+    /* ============ MENU ============ */
+    .container2 {
+      padding: 80px 40px 100px;
+      background: #fff;
+    }
+
+    .top {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .top h1 {
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', sans-serif;
+      font-size: 38px;
+      color: #1a1a1a;
+    }
+
+    .all-grid {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 25px;
+      max-width: 1200px;
+      width: 100%;
+    }
+
+    .card {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      width: 100%;
+      border-radius: 16px;
+      transition: 0.4s ease-in-out;
+      background: white;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      transform: translateY(-9px);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+
+    .card:hover img {
+      transform: scale(1.05);
+    }
+
+    .dis {
+      padding: 18px 16px 20px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .dis h3 {
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-weight: bold;
+      font-size: 15px;
+      margin-bottom: 8px;
+      line-height: 1.3;
+      color: #1a1a1a;
+    }
+
+    .dis p {
+      margin-bottom: 12px;
+      font-size: 13px;
+      color: #666;
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    .dis span {
+      font-weight: bold;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-size: 22px;
+      margin-top: 5px;
+      color: #1a1a1a;
+    }
+
+    .LL {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid #eee;
+    }
+
+    .LL a {
+      color: var(--green);
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 0.3px;
+      transition: 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .LL a:hover {
+      color: var(--green-dark);
+      gap: 10px;
+    }
+
+    /* ============ OUR STORY ============ */
+    .about-section {
+      padding: 100px 40px;
+      background: #fff;
+    }
+
+    .about-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-image {
+      width: 100%;
+      height: 400px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .about-text h2 {
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', sans-serif;
+      font-size: 34px;
+      color: #1a1a1a;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .about-text h2 span {
+      color: #1a1a1a;
+      display: block;
+    }
+
+    .about-text p {
+      font-size: 14px;
+      line-height: 1.8;
+      color: #555;
+      margin-bottom: 15px;
+    }
+
+    .about-text .learn-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 15px;
+      color: #1a1a1a;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 14px;
+      transition: 0.3s;
+      border-bottom: 1px solid #1a1a1a;
+      padding-bottom: 2px;
+    }
+
+    .about-text .learn-more:hover {
+      gap: 14px;
+      color: var(--green);
+      border-color: var(--green);
+    }
+
+    /* ============ GALLERY ============ */
+    .gallery-section {
+      padding: 80px 40px;
+      background: #fff;
+    }
+
+    .gallery-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .gallery-grid .g-item {
+      width: 100%;
+      height: 280px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      transition: 0.4s;
+      cursor: pointer;
+    }
+
+    .gallery-grid .g-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+    }
+
+    .gallery-grid .g-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .gallery-grid .g-item:hover img {
+      transform: scale(1.08);
+    }
+
+    /* ============ INFO BAR (Opening Hours / Visit Us) ============ */
+    .info-bar {
+      background: #fff;
+      padding: 60px 40px;
+    }
+
+    .info-bar-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .info-bar-inner h4 {
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', sans-serif;
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: #1a1a1a;
+    }
+
+    .info-bar-inner p {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.8;
+    }
+
+    .info-bar-inner a {
+      color: var(--green);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .info-bar-inner a:hover {
+      text-decoration: underline;
+    }
+
+    /* ============ FOOTER ============ */
+    .site-footer {
+      background: url("image/wood.jpg");
+      color: #ccc;
+      padding: 25px 40px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .footer-inner .brand {
+      font-size: 20px;
+      font-weight: bold;
+      color: var(--header-color);
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-inner .brand i {
+      font-size: 18px;
+    }
+
+    .footer-inner .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      align-items: center;
+      font-size: 12px;
+      color: #aaa;
+    }
+
+    .footer-inner .contact-info a {
+      color: #ccc;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .footer-inner .contact-info a:hover {
+      color: #fff;
+    }
+
+    .footer-inner .whatsapp-btn {
+      background: #25D366;
+      color: #fff !important;
+      padding: 7px 16px;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.3s;
+    }
+
+    .footer-inner .whatsapp-btn:hover {
+      background: #1da851;
+      transform: scale(1.03);
+      text-decoration: none !important;
+    }
+
+    .footer-inner .socials {
+      display: flex;
+      gap: 12px;
+    }
+
+    .footer-inner .socials a {
+      color: #888;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .footer-inner .socials a:hover {
+      color: #fff;
+    }
+
+    .copyright {
+      text-align: center;
+      padding: 15px 0 0;
+      font-size: 11px;
+      color: #666;
+      border-top: 1px solid #2a2a2a;
+      max-width: 1200px;
+      margin: 15px auto 0;
+    }
+
+    /* ============ DETAIL PAGE ============ */
+    .detail-container {
+      padding: 150px 100px 100px;
+      background: #f9f9f9;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .detail-card {
+      display: flex;
+      gap: 50px;
+      max-width: 1000px;
+      width: 100%;
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .detail-card img {
+      width: 400px;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 20px;
+      flex: 1 1 300px;
+    }
+
+    .detail-info {
+      flex: 1 1 300px;
+    }
+
+    .detail-info h1 {
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', sans-serif;
+      font-size: 34px;
+      margin-bottom: 15px;
+      color: #222;
+      line-height: 1.2;
+    }
+
+    .detail-info .price {
+      font-size: 32px;
+      font-weight: bold;
+      color: var(--green);
+      margin-bottom: 20px;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+
+    .detail-info p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #555;
+      margin-bottom: 25px;
+    }
+
+    .order-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--green);
+      color: white;
+      padding: 15px 35px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      transition: 0.3s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .order-btn:hover {
+      background: var(--green-dark);
+      transform: scale(1.03);
+      box-shadow: 0 8px 25px rgba(9, 137, 2, 0.3);
+    }
+
+    .back-link {
+      margin-top: 25px;
+      display: inline-block;
+      color: var(--green);
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+      color: var(--green-dark);
+    }
+
+    /* ============ RESPONSIVE ============ */
+    @media screen and (max-width: 1200px) {
+      .grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media screen and (max-width: 992px) {
+      .container {
+        padding: 140px 40px 80px;
+      }
+
+      .container h1 {
+        font-size: 52px;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .right li {
+        margin-right: 25px;
+      }
+
+      .right li a {
+        font-size: 13px;
+      }
+
+      .left {
+        font-size: 20px;
+        margin-left: 20px;
+      }
+
+      .container2 {
+        padding: 60px 20px 80px;
+      }
+
+      .about-inner {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .about-image {
+        height: 320px;
+      }
+
+      .about-text h2 {
+        font-size: 28px;
+      }
+
+      .gallery-grid {
+        gap: 15px;
+      }
+
+      .gallery-grid .g-item {
+        height: 220px;
+      }
+
+      .detail-container {
+        padding: 120px 30px 80px;
+      }
+    }
+
+    /* MOBILE: header moves to bottom like a mobile app */
+    @media screen and (max-width: 768px) {
+      header {
+        top: auto;
+        bottom: 0;
+        height: 68px;
+        background: #1e1e1e;
+        border-top: 2px solid var(--header-color);
+        justify-content: center;
+        padding: 0;
+        z-index: 200;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .left {
+        display: none;
+      }
+
+      .right {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .right ul {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        align-items: center;
+        padding: 0 5px;
+        list-style: none;
+      }
+
+      .right li {
+        margin-right: 0;
+        flex: 1;
+        text-align: center;
+      }
+
+      .right li::before {
+        display: none;
+      }
+
+      .right li a {
+        font-size: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2px;
+        padding: 4px 0;
+        color: var(--header-text);
+      }
+
+      .right li a::before {
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+        font-size: 18px;
+        display: block;
+        color: var(--header-text);
+      }
+
+      .right li a::after {
+        font-size: 9px;
+        display: block;
+        color: var(--header-text);
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        font-weight: bold;
+        margin-top: 1px;
+        letter-spacing: 0.3px;
+      }
+
+      .right li a[href="#home"]::before {
+        content: "\f015";
+      }
+
+      .right li a[href="#menu"]::before {
+        content: "\f2e9";
+      }
+
+      .right li a[href="#about"]::before {
+        content: "\f05a";
+      }
+
+      .right li a[href="#gallary"]::before {
+        content: "\f03e";
+      }
+
+      .right li a[href="#contect"]::before {
+        content: "\f095";
+      }
+
+      .right li a[href="#home"]::after {
+        content: "HOME";
+      }
+
+      .right li a[href="#menu"]::after {
+        content: "MENU";
+      }
+
+      .right li a[href="#about"]::after {
+        content: "ABOUT";
+      }
+
+      .right li a[href="#gallary"]::after {
+        content: "GALLERY";
+      }
+
+      .right li a[href="#contect"]::after {
+        content: "CONTACT";
+      }
+
+      .container {
+        padding: 120px 20px 100px;
+        min-height: 100vh;
+      }
+
+      .container h1 {
+        font-size: 38px;
+        line-height: 42px;
+      }
+
+      .container p {
+        font-size: 15px;
+      }
+
+      .by {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .by li {
+        width: 100%;
+        justify-content: center;
+        padding: 0 15px;
+        height: 48px;
+      }
+
+      .by li a {
+        font-size: 15px;
+      }
+
+      .container2 {
+        padding: 40px 15px 80px;
+      }
+
+      .top h1 {
+        font-size: 24px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        max-width: 400px;
+      }
+
+      .card img {
+        height: 220px;
+      }
+
+      .about-section {
+        padding: 60px 20px;
+      }
+
+      .about-image {
+        height: 250px;
+      }
+
+      .about-text h2 {
+        font-size: 22px;
+      }
+
+      .about-text p {
+        font-size: 13px;
+      }
+
+      .gallery-section {
+        padding: 50px 20px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+
+      .gallery-grid .g-item {
+        height: 220px;
+      }
+
+      .info-bar {
+        padding: 40px 20px;
+      }
+
+      .info-bar-inner {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      .site-footer {
+        padding: 20px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-inner .contact-info {
+        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .detail-container {
+        padding: 100px 15px 100px;
+      }
+
+      .detail-card {
+        padding: 20px;
+        gap: 25px;
+      }
+
+      .detail-card img {
+        width: 100%;
+        height: 250px;
+        flex: auto;
+      }
+
+      .detail-info h1 {
+        font-size: 24px;
+      }
+
+      .detail-info .price {
+        font-size: 24px;
+      }
+
+      .detail-info p {
+        font-size: 14px;
+      }
+
+      .order-btn {
+        width: 100%;
+        justify-content: center;
+        font-size: 15px;
+        padding: 14px 25px;
+      }
+
+      body {
+        padding-bottom: 68px;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .container h1 {
+        font-size: 30px;
+        line-height: 34px;
+      }
+
+      .container p {
+        font-size: 14px;
+      }
+
+      .top h1 {
+        font-size: 20px;
+      }
+
+      .dis h3 {
+        font-size: 14px;
+      }
+
+      .dis p {
+        font-size: 12px;
+      }
+
+      .dis span {
+        font-size: 20px;
+      }
+
+      .right li a::before {
+        font-size: 16px;
+      }
+
+      .right li a::after {
+        font-size: 8px;
+      }
+
+      .right ul {
+        padding: 0 2px;
+      }
+
+      .detail-info h1 {
+        font-size: 20px;
+      }
+
+      .detail-info .price {
+        font-size: 20px;
+      }
+
+      .about-text h2 {
+        font-size: 20px;
+      }
+    }
+
+    section {
+      scroll-margin-top: 80px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="left">
+      <i class="fa-solid fa-tree"></i> Savanna Bites
+    </div>
+    <div class="right">
+      <ul>
+        <li><a href="#home">HOME</a></li>
+        <li><a href="#menu">MENU</a></li>
+        <li><a href="#about">ABOUT</a></li>
+        <li><a href="#gallary">GALLERY</a></li>
+        <li><a href="#contect">CONTACT</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section id="home">
+    <div class="container">
+      <h1>Authentic Taste.<br>Made Fresh.</h1>
+      <p>
+        Experience the finest modern Nigerian cuisine in Abuja.<br>
+        Freshly prepared with passion and tradition.
+      </p>
+      <div class="by">
+        <li><a href="#menu">VIEW MENU</a></li>
+        <li>
+          <a href="https://wa.me/2348051669399" target="_blank">
+            <i class="fa-brands fa-whatsapp"></i> ORDER ON WHATSAPP
+          </a>
+        </li>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section id="menu">
+    <div class="container2">
+      <div class="top">
+        <h1>Discover Our Popular Dishes</h1>
+      </div>
+      <div class="all-grid">
+        <div class="grid">
+
+          <!-- Card 1: Jollof -->
+          <div class="card">
+            <img src="image\background.png" alt="Signature Smoky Jollof">
+            <div class="dis">
+              <h3>Signature Smoky Jollof &amp; Grilled Chicken</h3>
+              <span>₦7,500</span>
+              <div class="LL">
+                <a href="detail.html?item=jollof">VIEW DETAILS →</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Efo Riro -->
+          <div class="card">
+            <img src="image/efo.jpg" alt="Efo Riro with Pounded Yam">
+            <div class="dis">
+              <h3>Efo Riro with Pounded Yam &amp; Assorted Meat</h3>
+              <span>₦9,200</span>
+              <div class="LL">
+                <a href="detail.html?item=efo">VIEW DETAILS →</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Asun -->
+          <div class="card">
+            <img src="image/asun.jpg" alt="Asun Spicy Grilled Goat Meat">
+            <div class="dis">
+              <h3>Asun (Spicy Grilled Goat Meat) Plate</h3>
+              <span>₦6,800</span>
+              <div class="LL">
+                <a href="detail.html?item=asun">VIEW DETAILS →</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: Tilapia -->
+          <div class="card">
+            <img src="image/tila.jpg" alt="Fresh Tilapia Fish Pepper Soup">
+            <div class="dis">
+              <h3>Fresh Tilapia Fish Pepper Soup</h3>
+              <span>₦8,500</span>
+              <div class="LL">
+                <a href="detail.html?item=tila">VIEW DETAILS →</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR STORY -->
+  <section id="about" class="about-section">
+    <div class="about-inner">
+      <div class="about-image">
+        <img src="image/modesty.jpg" alt="Our kitchen">
+      </div>
+      <div class="about-text">
+        <h2>Our Story:<span>Tradition Meets Modernity</span></h2>
+        <p>
+          Savanna Bites is dedicated to authentic Nigerian recipes, from classic smoky jollof to rich, slow-cooked stews
+          and perfectly grilled meats — all made with fresh, locally sourced ingredients.
+        </p>
+        <p>
+          We blend time-honoured cooking techniques with contemporary flair, creating a dining experience that feels
+          both familiar and fresh.
+        </p>
+        <a href="#" class="learn-more">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallary" class="gallery-section">
+    <div class="gallery-inner">
+      <div class="gallery-grid">
+        <div class="g-item"><img src="image/jj1.jpg" alt="Gallery 1"></div>
+        <div class="g-item"><img src="image/gala3.jpg" alt="Gallery 2"></div>
+        <div class="g-item"><img src="image/gala4.jpg" alt="Gallery 3"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INFO BAR -->
+  <div class="info-bar" id="contect">
+    <div class="info-bar-inner">
+      <div>
+        <h4>Opening Hours</h4>
+        <p>Mon–Fri: 11AM – 11PM<br>Sun: 12PM – 9PM</p>
+      </div>
+      <div>
+        <h4>Visit Us</h4>
+        <p>Gwagwalada Anagada Abuja, Nigeria | <a href="https://maps.app.goo.gl/R8W6L4rRYfNKL9FUA">Map link</a></p>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="brand">
+        <i class="fa-solid fa-tree"></i> Savanna Bites
+      </div>
+      <div class="contact-info">
+        <a href="tel:+2341234567890"><i class="fa-solid fa-phone"></i> +234 123 456 7890</a>
+        <a href="https://wa.me/2348051669399" target="_blank" class="whatsapp-btn">
+          <i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp
+        </a>
+        <a href="mailto:hello@savannabites.com"><i class="fa-solid fa-envelope"></i> hello@savannabites.com</a>
+        <div class="socials">
+          <a href="#"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-twitter"></i></a>
+          <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; 2025 Savanna Bites. All Rights Reserved.
+    </div>
+  </footer>
+
+  <!-- DETAIL PAGE -->
+  <div id="detailPage" style="display:none;"></div>
+
+  <script>
+    (function () {
+      const detailPage = document.getElementById('detailPage');
+      const mainSections = document.querySelectorAll('section');
+      const infoBar = document.querySelector('.info-bar');
+      const footer = document.querySelector('footer');
+
+      const products = {
+        jollof: {
+          name: 'Signature Smoky Jollof & Grilled Chicken',
+          price: '₦7,500',
+          description: 'Our signature smoky jollof rice, cooked over open fire with a blend of traditional spices, served with tender grilled chicken, fried plantain, and fresh coleslaw. A true taste of Abuja.',
+          image: 'image/background.png'
+        },
+        efo: {
+          name: 'Efo Riro with Pounded Yam & Assorted Meat',
+          price: '₦9,200',
+          description: 'Rich and flavorful Efo Riro (spinach stew) cooked with assorted meat, served with smooth pounded yam. A classic Nigerian comfort meal.',
+          image: 'image/efo.jpg'
+        },
+        asun: {
+          name: 'Asun (Spicy Grilled Goat Meat) Plate',
+          price: '₦6,800',
+          description: 'Tender goat meat grilled to perfection with a spicy pepper mix, onions, and bell peppers. Served sizzling hot.',
+          image: 'image/asun.jpg'
+        },
+        tila: {
+          name: 'Fresh Tilapia Fish Pepper Soup',
+          price: '₦8,500',
+          description: 'Fresh tilapia simmered in a fragrant pepper soup broth with traditional herbs and spices. Light, spicy, and deeply satisfying.',
+          image: 'image/tila.jpg'
+        }
+      };
+
+      function showDetail(productKey) {
+        const product = products[productKey] || products.jollof;
+        const phoneNumber = '2348051669399'; // REPLACE WITH YOUR PHONE NUMBER
+        const message = encodeURIComponent(
+          `Hello Savanna Bites! I would like to order:\n\n🍽️ ${product.name}\n💰 Price: ${product.price}\n\nPlease confirm my order. Thank you!`
+        );
+        const whatsappLink = `https://wa.me/${phoneNumber}?text=${message}`;
+
+        detailPage.innerHTML = `
+          <div class="detail-container">
+            <div class="detail-card">
+              <img src="${product.image}" alt="${product.name}">
+              <div class="detail-info">
+                <h1>${product.name}</h1>
+                <div class="price">${product.price}</div>
+                <p>${product.description}</p>
+                <a href="${whatsappLink}" target="_blank" class="order-btn">
+                  <i class="fa-brands fa-whatsapp"></i> ORDER NOW ON WHATSAPP
+                </a>
+                <br>
+                <a href="#" class="back-link" id="backToMenu">← Back to Menu</a>
+              </div>
+            </div>
+          </div>
+        `;
+
+        detailPage.style.display = 'block';
+        mainSections.forEach(sec => sec.style.display = 'none');
+        infoBar.style.display = 'none';
+        footer.style.display = 'none';
+        window.scrollTo(0, 0);
+
+        document.getElementById('backToMenu').addEventListener('click', function (e) {
+          e.preventDefault();
+          mainSections.forEach(sec => sec.style.display = '');
+          infoBar.style.display = '';
+          footer.style.display = '';
+          detailPage.style.display = 'none';
+          document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
+          history.pushState(null, '', '#menu');
+        });
+
+        history.pushState(null, '', `#detail-${productKey}`);
+      }
+
+      document.addEventListener('click', function (e) {
+        const link = e.target.closest('.LL a');
+        if (link && link.getAttribute('href') && link.getAttribute('href').includes('detail.html')) {
+          e.preventDefault();
+          const href = link.getAttribute('href');
+          const urlParams = new URLSearchParams(href.split('?')[1]);
+          const item = urlParams.get('item') || 'jollof';
+          showDetail(item);
+        }
+      });
+
+      function checkHash() {
+        const hash = window.location.hash;
+        if (hash.startsWith('#detail-')) {
+          const item = hash.replace('#detail-', '');
+          if (products[item]) showDetail(item);
+        }
+      }
+
+      window.addEventListener('hashchange', checkHash);
+      checkHash();
+    })();
+  </script>
+
+</body>
+
+</html>
